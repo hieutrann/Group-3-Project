@@ -1,0 +1,93 @@
+﻿<div class="line"></div>
+<div class="wrapper">
+  <header role="banner">
+    <nav role="navigation">
+      <h1><a href="#">HJLM Consulting</a></h1>
+      <ul class="nav-ul">
+      </ul>
+    </nav>
+  </header>
+  <main role="main">
+    <section class="sec-intro" role="section">
+      <img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c5/Pistol_Pete.svg/220px-Pistol_Pete.svg.png" alt="" />
+        <b><p>Please enter in a comment in the box below. A true result is a positive comment and false result
+        is a negative comment.</b></p>
+        @{
+    var result = ViewBag.Result;
+}
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Analysis">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Comment" class="control-label"></label>
+                <input asp-for="Comment" class="form-control" />
+                <span asp-validation-for="Comment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Check" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+    <div class="col-md-offset-4 col-md-4">
+        @if (result != null)
+        {
+            <h2>Result</h2>
+            <h3>Predection:@result.Prediction</h3>
+            <h3>Score:@result.Score</h3>
+        }
+
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+    <p>Our consulting firm is dedicated to finding data driven solutions for the problems of today's businesses.</p>
+        <hr />
+        <h1>What We Do</h1>
+      <h4>Sentiment Analysis</h4>
+        <p>Sentiment analysis is the process of computationally identifying and categorizing opinions
+        expressed in a piece of text, especially in order to determine whether the writer's attitude
+        towards a particular topic, product, etc. is positive, negative, or neutral. This is one
+        of many processes we can use to help your business make data driven decisions.</p>
+    </section>
+    <section class="sec-boxes" role="section">
+      <adrticle class="box">
+        <h4>Machine Learning</h4>
+          <p>Using ML.Net machine learning framework, we are able to train a data set of 1000 customer
+          reviews on Yelp. The sentences are classified as positive and negative by human experts. The
+          program can then predict based on new data whether the comments entered are positive or negative.
+          </p>
+      </adrticle>
+      <adrticle class="box">
+             <hr />
+          <h1>Company Values</h1>
+        <h4>Accessibility</h4>
+        <p>Our products work, and you will know how to work them.</p>
+            </adrticle>
+      <adrticle class="box">
+        <h4>Functionality</h4>
+        <p>Automate the things you need. Tinker with the things you don't.</p>
+      </adrticle>
+    </section>
+    <section class="sec-events" role="section">
+        <hr />
+       <h1>Our Standards</h1>
+      <article>
+        <h4>Compatibility</h4>
+        <p>With such variance even among our team, we aim to have our products available on as many devices as necessary.</p>
+      </article>
+      <article>
+        <h4>Service</h4>
+        <p>We help each other, to help you.</p>
+      </article>
+    </section>
+    <section class="sec-partners" role="section">
+      <hr />
+    </section>
+  </main>
+</div>
+
+<div class="line"></div>
+@model SentimentAnalysisML.Model.DataModels.ModelInput
